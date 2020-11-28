@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://time2hack.com/favicon.png" type="image/png">
+  <link rel="icon" href="https://time2hack.com/favicon.png" type="image/png">
+  <title>Shoe IT</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="auth-false">
+  <div class="container">
+    <header class="clearfix">
+      <div>
+        <img src="logo.jpg" height="128px" width="128px" style="float: left">
+      </div>
+      <h2>ShoeIT</h2>
+      <div class="userAuth unauthenticated pull-right">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#regM">Signup</button>
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#logM">Login</button>
+      </div>
+      <div class="userAuth authenticated pull-right">
+        <span class="user-info">
+          <!-- <img src="./user.svg" alt="User" class="rounded-circle"> -->
+        </span>
+        <button type="button" class="btn btn-success" id="logout">Logout</button>
+      </div>
+    </header>
+    <hr/>
+    <main class="authenticated">
+     <div>
+      <h2>Shoes Size Converter</h2>
+      <div class="row">
+
+       <div class="form-group col-md-6">
+        <label class="control-label">Select Gender:</label>
+        <select class="form-control" id="selected_gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label class="control-label">Select Conversion Type:</label>
+        <select class="form-control" id="selection_type">
+          <option value="US2EU">US to EU</option>
+          <option value="US2UK">US to UK</option>
+
+          <option value="UK2US">UK to US</option>
+          <option value="UK2EU">UK to EU</option>
+
+          <option value="EU2US">EU to US</option>
+          <option value="EU2UK">EU to UK</option>
+
+        </select>
+      </div>
+
+
+      <div class="form-group col-md-6">
+        <label class="control-label">Size To Convert</label>
+        <input class="form-control" type="number" name="shoes_size" id="shoes_size">
+      </div>
+
+
+      <div class="form-group col-md-6">
+        <label  class="control-label">&nbsp;</label>
+        <button class="form-control" id="calculate_button">Calculate</button>
+      </div>
+
+      <div class="form-group col-md-6">
+          <label  class="control-label">Result</label>
+          <textarea class="form-control" readonly="readonly" id="result"></textarea>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</main>
+
+</div>
+<div class="modal fade" id="regM" tabindex="-1" role="dialog" aria-labelledby="Signup" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h4 class="modal-title" id="registerModalLabel">Signup</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="recipient-name" class="control-label">Email:</label>
+          <input type="text" class="form-control" id="registerEmail">
+        </div>
+        <div class="form-group">
+          <label for="message-text" class="control-label">Password:</label>
+          <input type="password" class="form-control" id="registerPassword">
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" id="trySignup">Signup</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="logM" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+     
+        <div class="modal-header">
+          <h4 class="modal-title" id="loginModalLabel">Login</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Email:</label>
+            <input type="text" class="form-control" id="loginEmail">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">Password:</label>
+            <input type="password" class="form-control" id="loginPassword">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" id="doLogin">Login</button>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="Message" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="messageModalLabel">Message</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+
+<script src="./script.js"></script>
+</body>
+</html>
